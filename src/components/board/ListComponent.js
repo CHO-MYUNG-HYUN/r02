@@ -1,6 +1,8 @@
 import { createSearchParams } from "react-router-dom";
 import { getList } from "../../api/boardAPI";
 import { useEffect, useState } from "react";
+import ListPageComponent from "../common/ListPageComponent";
+
 
 const initState = {
   dtoList: [],
@@ -14,7 +16,7 @@ const initState = {
   requestDTO: null
 }
 
-const ListComponent = ({ queryObj, movePage }) => {
+const ListComponent = ({ queryObj, movePage, moveRead }) => {
 
   const [listData, setListData] = useState(initState)
 
@@ -27,43 +29,27 @@ const ListComponent = ({ queryObj, movePage }) => {
 
   }, [queryObj])
 
-  const handleClickPage = (pageNum) => {
-    movePage(pageNum)
-  }
+
 
   return (
-    <div className="h-96 bg-red-300 relative">
+    <div className="h-96 bg-red-300">
       <div>List Components</div>
-      <div className="relative">
+
+      <div className="">
         <ul className="">
           {listData.dtoList.map(({ bno, title, writer, replyCount }) =>
-            <li key={bno}>{bno} - {title} - [{replyCount}]</li>
+            <li
+              key={bno}
+              onClick={() => moveRead(bno)}
+            >
+              {bno} - {title} - [{replyCount}]
+            </li>
           )}
         </ul>
       </div>
-      <div className=" m-2 p-2 bg-black  absolute bottom-0">
-        <ul className=" flex border-4 left-1/2 ">
-          {listData.prev ? <li 
-          className="m-1 pb-1 px-1 bg-blue-800 border-2 text-white font-bold rounded-md"
-          onClick={() => movePage(listData.start-1)}
-          >
-             PREV</li> : <></>}
 
-          {listData.pageNums.map(num =>
-            <li
-             className="  m-1 pb-1 px-1 bg-blue-800 border-2 text-white font-bold rounded-md" key={num}
-              onClick={() => movePage(num)}
-            >
-              [{num}]</li>)}
+      <ListPageComponent movePage={movePage} {...listData}></ListPageComponent>
 
-          {listData.next ? 
-          <li 
-          className="m-1 pb-1 px-1 bg-blue-800 border-2 text-white font-bold rounded-md"
-          onClick={() => movePage(listData.end+1)}
-          >
-            NEXT</li> : <></>}
-        </ul>
-      </div>
     </div>
   );
 }
