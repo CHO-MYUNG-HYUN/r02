@@ -13,10 +13,10 @@ const ReadPage = () => {
 
   return (
     <div>
-      Board Read
       <ReadComponent bno={bno}></ReadComponent>
+      <button className="ml-[40%] text-3xl font-semibold underline text-yellow-400 mt-4" onClick={moveList}> Go List </button>
       <ReplyWrapper bno={bno}></ReplyWrapper>
-      <button onClick={moveList}> [Go List] </button>
+      
     </div>
   );
 }

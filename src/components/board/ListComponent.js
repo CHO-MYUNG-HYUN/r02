@@ -32,11 +32,9 @@ const ListComponent = ({ queryObj, movePage, moveRead }) => {
 
 
   return (
-    <div className="h-96 bg-red-300">
-      <div>List Components</div>
-
+    <div className="h-full ml-[40%] ">
       <div className="">
-        <ul className="">
+        <ul className="text-2xl text-white">
           {listData.dtoList.map(({ bno, title, writer, replyCount }) =>
             <li
               key={bno}

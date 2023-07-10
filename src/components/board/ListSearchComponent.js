@@ -16,7 +16,9 @@ const ListSearchComponent = ({ moveSearch, queryObj }) => {
   }, [queryObj])
 
   return (
-    <div className="m-4 p-4 bg-blue-200 border-2">
+    <div className="m-4 p-4 border-4 bg-no-repeat w-[34%] ml-[35%] bg-cover
+    bg-[url('https://cdn.pixabay.com/photo/2023/06/03/15/26/ginkgo-8037886_1280.jpg')]
+    ">
       <select
         className="border-2 m-1 p-2"
         value={searchObj.type}

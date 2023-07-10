@@ -5,11 +5,11 @@ const ListPageComponent = ({ movePage, start, end, prev, next, pageNums, page })
   }
 
   return (
-    <div className=" m-2 p-2 justify-center">
-      <ul className=" flex  ">
+    <div className=" m-2 p-2 justify-center -ml-5">
+      <ul className=" flex">
         {prev ?
           <li
-            className="m-1 pb-1 px-1 bg-blue-800  text-white font-bold rounded-md"
+            className="m-1 pb-1 px-1 bg-blue-600  text-white font-bold rounded-md"
             onClick={() => handleClickPage(start - 1)}
           >
             PREV
@@ -17,17 +17,16 @@ const ListPageComponent = ({ movePage, start, end, prev, next, pageNums, page })
         }
         {pageNums.map(num =>
           <li
-            className="  m-1 pb-1 px-1 bg-blue-400 border-2 text-white font-bold rounded-md active:bg-violet-700" 
+            className="  m-1 pb-1 px-1 bg-blue-400 border-2 text-white font-bold rounded-md active:bg-violet-700"
             key={num}
             onClick={() => handleClickPage(num)}
           >
             {page === num ? <span className="text-black">[{num}]</span> : <span>[{num}]</span>}
-            
           </li>
         )}
         {next ?
           <li
-            className="m-1 pb-1 px-1 bg-blue-800 border-2 text-white font-bold rounded-md"
+            className="m-1 pb-1 px-1 bg-blue-600 border-2 text-white font-bold rounded-md"
             onClick={() => handleClickPage(end + 1)}
           >
             NEXT

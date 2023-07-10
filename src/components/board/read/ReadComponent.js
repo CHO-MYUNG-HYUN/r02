@@ -21,7 +21,7 @@ const ReadComponent = ({bno}) => {
   }, [bno])
 
   return (
-    <div>
+    <div className="pt-5 ml-[40%] text-2xl text-white">
       <div>
         bno - {board.bno}
       </div>
