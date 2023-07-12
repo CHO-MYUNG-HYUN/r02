@@ -39,21 +39,23 @@ const ReplyInput = ({ bno, refreshLast }) => {
   }
 
   return (
-    <div className=" m-8 p-1 bg-lime-200 border-2 ml-[37%] w-[30%] border-lime-400 border-4 rounded-2xl">
+    <div className=" m-8 p-1 bg-lime-200 ml-[37%] w-[30%] border-lime-400 border-4 rounded-2xl">
       <div className="font-extrabold m-2">Reply Input</div>
       <div className="m-4 ">
         <input
           className="w-[80%]"
           type="text" name="replyText"
           value={reply.replyText}
-          onChange={handleChange} />
+          onChange={handleChange}
+        />
       </div>
       <div className="m-4">
         <input
           className="w-[80%]"
           type="text" name="replyer"
           value={reply.replyer}
-          onChange={handleChange} />
+          onChange={handleChange}
+        />
       </div>
       <div className="m-2">
         <button

@@ -68,12 +68,12 @@ const ReplyWrapper = ({ bno }) => {
   return (
     <div>
       <ReplyInput bno={bno} refreshLast={refreshLast}></ReplyInput>
-
-      {data.current !== 0 ? <ReplyRead
-        rno={data.current}
-        cancelRead={cancelRead}
-        refreshPage={refreshPage}></ReplyRead> : <></>}
-
+      {data.current !== 0 ?
+        <ReplyRead
+          rno={data.current}
+          cancelRead={cancelRead}
+          refreshPage={refreshPage}>
+        </ReplyRead> : <></>}
       <ReplyList {...data} movePage={movePage} changeCurrent={changeCurrent}></ReplyList>
     </div>
   );

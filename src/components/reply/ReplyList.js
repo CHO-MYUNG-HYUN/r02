@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { getRepliesOfBoard } from "../../api/repliesAPI";
 import ListPageComponent from "../common/ListPageComponent";
 
-
-
 const initState = {
   dtoList: [],
   end: 0,
@@ -15,8 +13,6 @@ const initState = {
   size: 0,
   requestDTO: null
 }
-
-
 
 const ReplyList = ({ bno, page, last, refresh, movePage, changeCurrent }) => {
 
@@ -49,7 +45,8 @@ const ReplyList = ({ bno, page, last, refresh, movePage, changeCurrent }) => {
               onClick={() => changeCurrent(reply.rno)}
             >
               {reply.rno} -- {reply.replyText}
-            </li>)}
+            </li>
+          )}
         </ul>
         <ListPageComponent movePage={movePage} {...listData}></ListPageComponent>
       </div>

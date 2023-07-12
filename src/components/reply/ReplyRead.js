@@ -61,8 +61,8 @@ const ReplyRead = ({ rno, cancelRead, refreshPage }) => {
             type="text"
             name="replyText"
             onChange={handleChange}
-            value={reply.replyText} >
-          </input>
+            value={reply.replyText}
+          />
         </div>
         <div className="mx-4 my-2">{reply.replyer}</div>
       </div>
