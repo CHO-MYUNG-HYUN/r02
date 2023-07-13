@@ -34,10 +34,12 @@ const ListComponent = ({ queryObj, movePage, moveRead }) => {
   return (
     <div className="h-full ">
       <div className="">
-        <ul className="text-2xl text-white flex flex-wrap container justify-center">
+        <ul className="text-2xl text-white flex flex-wrap container justify-center ">
           {listData.dtoList.map((dto) =>
             <li
-              className="w-2/5 bg-gray-700 m-2 p-2 rounded-lg shadow-lg"
+              className="w-2/5  m-2 p-2 rounded-lg shadow-lg border-4 border- border-purple-200
+              hover:bg-gradient-to-br from-transparent to-pink-400
+              hover:scale-105 duration-[400ms] ease-out :animate-ping cursor-pointer"
               key={dto.pno}
               onClick={() => moveRead(dto.pno)}
             >
