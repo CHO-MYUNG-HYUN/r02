@@ -18,7 +18,7 @@ const checkNull = (obj) => {
 
 const useQueryObj = () => {
 
-  const [search, setSearch] = useSearchParams()
+  const [search, setSearch] = useSearchParams() // 쿼리스트링 수집 후 객체로 만듬
   const navigate = useNavigate()
 
   console.log(search)
@@ -35,6 +35,7 @@ const useQueryObj = () => {
     const queryString = createSearchParams(queryObj).toString()
 
     navigate(`../list?${queryString}`)
+
   }
 
   const moveRead = (bno) => {
@@ -44,9 +45,21 @@ const useQueryObj = () => {
     const queryString = createSearchParams(queryObj).toString()
 
     navigate(`../read/${bno}?${queryString}`)
+
   }
 
-  return { queryObj, setSearch, moveList, moveRead }
+  const moveModify = (bno) => {
+
+    console.log("moveRead: " + bno)
+
+    const queryString = createSearchParams(queryObj).toString()
+
+    navigate(`../modify/${bno}?${queryString}`)
+
+  }
+
+  return { queryObj, setSearch, moveList, moveRead, moveModify }
+  
 }
 
 export default useQueryObj;
