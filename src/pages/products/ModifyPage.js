@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import useQueryObj from "../../hooks/useQueryObj";
-import ModifyComponents from "../../components/products/ModifyComponent";
+import ModifyComponent from "../../components/products/ModifyComponent";
 
 
 const ModifyPage = () => {
@@ -11,11 +11,11 @@ const ModifyPage = () => {
   return (
     <div>
       <div className="text-white">Product Modify Page - {pno}</div>
-      <ModifyComponents
+      <ModifyComponent
         pno={pno}
         moveList={moveList}
         moveRead={moveRead}>
-      </ModifyComponents>
+      </ModifyComponent>
     </div>
   );
 }
