@@ -7,7 +7,7 @@ const initState = {
   price: 4000
 }
 
-const RegisterComponent = ({moveList}) => {
+const RegisterComponent = ({ moveList }) => {
 
   const fileRef = useRef();
   const [product, setProduct] = useState({ ...initState })
@@ -50,23 +50,40 @@ const RegisterComponent = ({moveList}) => {
 
   }
 
-  return (  
-    <div className="m-2 p-2">
-      <div className="m-2 p-2 border-2">
-        <input type="text" name="pname" value={product.pname} onChange={handleChange}></input>
+  return (
+    <div className="ml-[35%] p-2 w-[30%] font-bold">
+
+      <div className="m-2 p-2 border-4 rounded-xl flex justify-center w-[300px] hover:backdrop-blur-sm">
+        <input className="rounded-lg bg-transparent h-[50px] text-center
+        focus:bg-pink-400 focus:bg-opacity-50"
+          type="text" name="pname" value={product.pname} onChange={handleChange}></input>
       </div>
-      <div className="m-2 p-2 border-2">
-        <input type="text" name="pdesc" value={ product.pdesc} onChange={handleChange}></input>
+
+      <div className="m-2 p-2 border-4 rounded-xl flex justify-center w-[300px] hover:backdrop-blur-sm">
+        <input className="rounded-lg bg-transparent h-[50px] text-center
+        focus:bg-pink-400 focus:bg-opacity-50"
+          type="text" name="pdesc" value={product.pdesc} onChange={handleChange}></input>
       </div>
-      <div className="m-2 p-2 border-2">
-        <input type="text" name="price" value={product.price} onChange={handleChange}></input>
+
+      <div className="m-2 p-2 border-4 rounded-xl flex justify-center w-[300px] hover:backdrop-blur-sm">
+        <input className="rounded-lg bg-transparent h-[50px] text-center
+        focus:bg-pink-400 focus:bg-opacity-50"
+          type="text" name="price" value={product.price} onChange={handleChange}></input>
       </div>
-      <div className="m-2 p-2 border-2">
-        <input type="file" ref={fileRef} multiple name="images" onChange={handleChange}></input>
+
+      <div className="m-2 p-2 border-4 rounded-xl flex justify-center w-[300px] hover:backdrop-blur-sm">
+        <input className="rounded-lg bg-transparent h-[50px] text-center
+        file:cursor-pointer
+        focus:bg-pink-400 focus:bg-opacity-50
+         file:py-2 file:px-4
+      file:rounded-lg file:border-4
+      file:text-sm "
+          type="file" ref={fileRef} multiple name="images" onChange={handleChange} ></input>
       </div>
-      <div className="m-2 p-2 border-2">
-        <button onClick={handleClickSave}>Save</button>
-        <button onClick={handleClickClear}>Clear Files</button>
+
+      <div className="m-2 p-2 border-4 rounded-xl flex justify-around w-[300px] h-[50px">
+        <button className=" rounded-xl " onClick={handleClickSave}>Save</button>
+        <button onClick={handleClickClear}>Clear</button>
       </div>
     </div>
   );
