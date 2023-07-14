@@ -38,7 +38,7 @@ const ListComponent = ({ queryObj, movePage, moveRead }) => {
           {listData.dtoList.map((dto) =>
             <li
               className="w-2/5  m-2 p-2 rounded-lg shadow-lg border-4 border- border-purple-200
-              hover:bg-gradient-to-br from-transparent to-pink-400
+              hover:bg-gradient-to-br from-transparent to-pink-300 hover:backdrop-blur-lg
               hover:scale-105 duration-[400ms] ease-out :animate-ping cursor-pointer"
               key={dto.pno}
               onClick={() => moveRead(dto.pno)}
