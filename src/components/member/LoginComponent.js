@@ -1,21 +1,33 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { requestLogin } from "../../reducers/loginSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { postLoginThunk, requestLogin } from "../../reducers/loginSlice";
 
 
 const initState = {
   email: "user00@aaa.com",
-  pw: "1111"
+  pw: "1234"
 }
 
 const LoginComponent = () => {
+
+  const loginState = useSelector(state => state.login)
 
   const [loginInfo, setLoginInfo] = useState({ ...initState })
 
   const dispatch = useDispatch()
 
+  const errorMsg = loginState.errorMsg
+
+  console.log("e: ", errorMsg)
+
   return (
-    <div>
+    <div className="font-bold">
+      <div className="text-3xl bg-red-500">
+        {loginState.loading ? "로그인중..." : ""}
+      </div>
+
+      {errorMsg ? <div className="text-3xl bg-red-500">이메일과 패스워드를 다시 확인해 주세요.</div> : <></>}
+
       <div>
         <label>Email</label>
         <input
@@ -32,10 +44,10 @@ const LoginComponent = () => {
           name="pw"
           value={loginInfo.pw}
           onChange={() => { }}
-         ></input>
+        ></input>
       </div>
       <div>
-        <button onClick={() => dispatch(requestLogin(loginInfo))}>Login</button>
+        <button onClick={() => dispatch(postLoginThunk(loginInfo))}>Login</button>
       </div>
     </div>
   );
