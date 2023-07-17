@@ -5,7 +5,7 @@ import { postLoginThunk, requestLogin } from "../../reducers/loginSlice";
 
 const initState = {
   email: "user00@aaa.com",
-  pw: "1234"
+  pw: "1111"
 }
 
 const LoginComponent = () => {
