@@ -1,11 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getCookie, setCookie } from "../util/cookieUtil";
+import { getCookie, removeCookie, setCookie } from "../util/cookieUtil";
 import { postLogin } from "../api/memberAPI";
 
-export const postLoginThunk =
-  createAsyncThunk('postLoginThunk', (params) => {
-    return postLogin(params)
-  })
+export const postLoginThunk = createAsyncThunk('postLoginThunk', (params) => {
+  return postLogin(params)
+})
 
 const loadCookie = () => {
 
@@ -31,45 +30,68 @@ const initState = {
 }
 
 const loginSlice = createSlice({
+
   name: "loginSlice",
+
   initialState: loadCookie(),
+
   reducers: {
     requestLogin: (state, param) => {
+
       const payload = param.payload
-      console.log("requestLogin >>> ", payload)
       const loginObj = { email: payload.email, signed: true }
+
+      console.log("requestLogin >>> ", payload)
 
       setCookie("login", JSON.stringify(loginObj), 1)
 
       return loginObj
+
+    },
+    requestLogout: (state) => {
+
+      removeCookie("login")
+      
+      state.email = ""
+
     }
   },
   extraReducers: (builder) => {
-    builder.addCase(postLoginThunk.fulfilled, (state, action)=> {
-      console.log("fulfilled", action.payload)
-      const {email, nickname, admin, errorMsg} = action.payload
+    builder
+      .addCase(postLoginThunk.fulfilled, (state, action) => {
 
-      if(errorMsg){
-        state.errorMsg = errorMsg
-        return
-      }
+        console.log("fulfilled", action.payload)
+        const { email, nickname, admin, errorMsg } = action.payload
 
-      state.loading = false
-      state.email = email
-      state.nickname = nickname
-      state.admin = admin
-      setCookie("login", JSON.stringify(action.payload), 1)
-    })
-    .addCase(postLoginThunk.pending, (state, action) => {
-      console.log("pending")
-      state.loading = true
-    })
-    .addCase(postLoginThunk.rejected, (state, action) => {
-      console.log("rejected")
-    })
+        if (errorMsg) {
+          state.errorMsg = errorMsg
+          return
+        }
+
+        state.loading = false
+        state.email = email
+        state.nickname = nickname
+        state.admin = admin
+
+        setCookie("login", JSON.stringify(action.payload), 1)
+
+      })
+      .addCase(postLoginThunk.pending, (state, action) => {
+
+        console.log("pending")
+
+        state.loading = true
+
+      })
+      .addCase(postLoginThunk.rejected, (state, action) => {
+
+        console.log("rejected")
+
+      })
   }
+
 })
 
-// export const { requestLogin } = loginSlice.actions
+export const { requestLogout } = loginSlice.actions
 
 export default loginSlice.reducer

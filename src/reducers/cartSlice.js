@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { getCart, postCart } from "../api/memberAPI";
 
 const initState = {
   items: [],
@@ -7,48 +8,36 @@ const initState = {
 }
 
 export const addCartThunk = createAsyncThunk("addCartThunk", async (item) => {
-
-  const res = await axios.post("http://localhost:8080/api/cart/add", item)
-
-  return res.data
-
+  return postCart(item)
 })
 
 export const getCartThunk = createAsyncThunk('getCartThunk', async (email) => {
-
-  if(!email){
-    return new Promise((resolve, reject) => {
-      resolve([])
-    })
-  }
-
-  const res = await axios.get(`http://localhost:8080/api/cart/${email}`)
-
-  return res.data
-
+  return getCart(email)
 })
 
 const cartSlice = createSlice({
 
   name: "cartSlice",
-
+  
   initialState: initState,
 
   extraReducers: (builder) => {
-    builder.addCase(addCartThunk.fulfilled, (state, action) => {
+    builder
+      .addCase(addCartThunk.fulfilled, (state, action) => {
 
-      console.log(action.payload)
+        console.log(action.payload)
 
-      state.items = action.payload
+        state.items = action.payload
 
-    })
-    .addCase(getCartThunk.fulfilled, (state, action) => {
+      })
+      .addCase(getCartThunk.fulfilled, (state, action) => {
 
-      console.log("getCartThunk fulfilled...")
-      console.log(action.payload)
-      state.items = action.payload
+        console.log("getCartThunk fulfilled...")
+        console.log(action.payload)
 
-    })
+        state.items = action.payload
+
+      })
 
   }
 
