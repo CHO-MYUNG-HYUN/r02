@@ -7,8 +7,8 @@ const CountDisplay = () => {
   console.log(obj)
 
   return (
-    <div className="text-4xl bg-white w-fit">
-      Count: {obj.num}
+    <div className="text-white text-4xl font-bold w-fit m-2 p-2">
+      Count : {obj.num}
     </div>
   );
 }
