@@ -13,9 +13,10 @@ const TodoInput = () => {
   }
 
   return (  
-    <div>
-      Todo Input
-      <input type="text" value={text} onChange={e => setText(e.target.value)}></input>
+    <div className="m-2 p-2 text-3xl text-white">
+      Todo Input : 
+      <input className="bg-transparent border-2 mx-4 rounded-lg backdrop-blur-md"
+       type="text" value={text} onChange={e => setText(e.target.value)}></input>
       <button onClick={handleClickSave}>Save</button>
     </div>
   );

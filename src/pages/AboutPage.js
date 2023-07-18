@@ -15,7 +15,6 @@ const AboutPage = () => {
       <TodoInput></TodoInput>
 
       <CountDisplay></CountDisplay>
-      <CountDisplay></CountDisplay>
       <CountButtons></CountButtons>
     </BasicLayout>
   );
