@@ -36,16 +36,15 @@ const loginSlice = createSlice({
   initialState: loadCookie(),
 
   reducers: {
-    requestLogin: (state, param) => {
+    requestLogin: (state, action) => {
 
-      const payload = param.payload
-      const loginObj = { email: payload.email, signed: true }
+      const payload = action.payload
 
       console.log("requestLogin >>> ", payload)
 
-      setCookie("login", JSON.stringify(loginObj), 1)
+      setCookie("login", JSON.stringify(payload), 1)
 
-      return loginObj
+      return payload
 
     },
     requestLogout: (state) => {
@@ -92,6 +91,7 @@ const loginSlice = createSlice({
 
 })
 
+export const { requestLogin } = loginSlice.actions
 export const { requestLogout } = loginSlice.actions
 
 export default loginSlice.reducer
