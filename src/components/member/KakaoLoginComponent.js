@@ -9,7 +9,7 @@ const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_KEY}&
 
 const KakaoLoginComponent = () => {
   return (  
-    <div className="text-3xl text-white">
+    <div className="text-3xl text-white m-2 p-2">
       <Link to={kakaoURL}>KAKAO LOGIN</Link>
     </div>
   );
