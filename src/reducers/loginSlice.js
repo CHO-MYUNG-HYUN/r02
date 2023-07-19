@@ -50,7 +50,7 @@ const loginSlice = createSlice({
     requestLogout: (state) => {
 
       removeCookie("login")
-      
+
       state.email = ""
 
     }
@@ -67,10 +67,11 @@ const loginSlice = createSlice({
           return
         }
 
-        state.loading = false
-        state.email = email
-        state.nickname = nickname
-        state.admin = admin
+        state = action.payload
+        // state.loading = false
+        // state.email = email
+        // state.nickname = nickname
+        // state.admin = admin
 
         setCookie("login", JSON.stringify(action.payload), 1)
 
