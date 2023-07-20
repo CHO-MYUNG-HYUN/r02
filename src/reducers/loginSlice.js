@@ -68,12 +68,15 @@ const loginSlice = createSlice({
         }
 
         state = action.payload
+
         // state.loading = false
         // state.email = email
         // state.nickname = nickname
         // state.admin = admin
 
         setCookie("login", JSON.stringify(action.payload), 1)
+
+        return {...action.payload, loading:false}
 
       })
       .addCase(postLoginThunk.pending, (state, action) => {
